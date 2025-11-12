@@ -21,7 +21,7 @@ public class Swinging : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            StartSwing();
+            Swing();
         if (Input.GetKeyUp(KeyCode.Mouse0)) 
             EndSwing();
     }
@@ -31,7 +31,7 @@ public class Swinging : MonoBehaviour
         DrawRope();
     }
 
-    void StartSwing()
+    void Swing()
     {
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxSwingDistance, attachable))
@@ -43,15 +43,15 @@ public class Swinging : MonoBehaviour
 
             float distanceFromPoint = Vector3.Distance(player.position, anchorPoint);
 
-            joint.maxDistance = distanceFromPoint * 0.5f;
-            joint.minDistance = distanceFromPoint * 0.2f;
+            joint.maxDistance = distanceFromPoint * 0.3f;
+            joint.minDistance = distanceFromPoint * 0.15f;
 
             joint.spring = 10f;
             joint.damper = 5f;
             joint.massScale = 4.5f;
 
-            lr.positionCount = 2;
 
+            lr.positionCount = 2;
         }
     }
 
@@ -66,7 +66,6 @@ public class Swinging : MonoBehaviour
         if (!joint)
             return;
 
-        currentGrapplePos = Vector3.Lerp(currentGrapplePos, anchorPoint, Time.deltaTime * 8f);
 
         lr.SetPosition(0, ropeLauncher.position);
         lr.SetPosition(1, anchorPoint);
