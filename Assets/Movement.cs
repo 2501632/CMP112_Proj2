@@ -40,6 +40,11 @@ public class Movement : MonoBehaviour
         {
             rb.AddForce(Vector3.down * gravMult, ForceMode.Force);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     // Update is called once per frame
