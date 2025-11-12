@@ -43,11 +43,11 @@ public class Swinging : MonoBehaviour
 
             float distanceFromPoint = Vector3.Distance(player.position, anchorPoint);
 
-            joint.maxDistance = distanceFromPoint * 0.8f;
-            joint.minDistance = distanceFromPoint * 0.25f;
+            joint.maxDistance = distanceFromPoint * 0.5f;
+            joint.minDistance = distanceFromPoint * 0.2f;
 
-            joint.spring = 4.5f;
-            joint.damper = 7f;
+            joint.spring = 10f;
+            joint.damper = 5f;
             joint.massScale = 4.5f;
 
             lr.positionCount = 2;
