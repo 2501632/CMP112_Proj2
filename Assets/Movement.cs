@@ -13,10 +13,16 @@ public class Movement : MonoBehaviour
     public float groundDistance;
     bool grounded;
 
+    public GameObject cameraObj;
+    public float sensY = 150f, sensX = 100f;
+    float mouseY, mouseX;
+    float lookY, lookX;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -43,6 +49,16 @@ public class Movement : MonoBehaviour
         vInput = Input.GetAxisRaw("Vertical");
         Vector3 moveInput = new Vector3(hInput, 0.0f, vInput);
         transform.Translate(moveInput * moveSpeed * Time.deltaTime);
+
+
+        mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * sensY;
+        mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * sensX;
+        lookY += mouseX;
+        lookX -= mouseY;
+        lookX = Mathf.Clamp(lookX, -90, 90);
+
+        cameraObj.transform.rotation = Quaternion.Euler(lookX, lookY, 0);
+        transform.rotation = Quaternion.Euler(0, lookY, 0);
     }
 
     void OnDrawGizmos()
