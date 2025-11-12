@@ -36,12 +36,12 @@ public class Swinging : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxSwingDistance, attachable))
         {
-            swingPoint = hit.point;
+            anchorPoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = swingPoint;
+            joint.connectedAnchor = anchorPoint;
 
-            float distanceFromPoint = Vector3.Distance(player.position, swingPoint);
+            float distanceFromPoint = Vector3.Distance(player.position, anchorPoint);
 
             joint.maxDistance = distanceFromPoint * 0.8f;
             joint.minDistance = distanceFromPoint * 0.25f;
@@ -66,9 +66,9 @@ public class Swinging : MonoBehaviour
         if (!joint)
             return;
 
-        currentGrapplePos = Vector3.Lerp(currentGrapplePos, swingPoint, Time.deltaTime * 8f);
+        currentGrapplePos = Vector3.Lerp(currentGrapplePos, anchorPoint, Time.deltaTime * 8f);
 
         lr.SetPosition(0, ropeLauncher.position);
-        lr.SetPosition(1, swingPoint);
+        lr.SetPosition(1, anchorPoint);
     }
 }
