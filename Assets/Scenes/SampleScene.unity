@@ -741,8 +741,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 1
-        value: 1
+        time: 0.91326904
+        value: 0.79268265
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -1110,6 +1110,9 @@ GameObject:
   - component: {fileID: 2010386976}
   - component: {fileID: 2010386975}
   - component: {fileID: 2010386974}
+  - component: {fileID: 2010386980}
+  - component: {fileID: 2010386979}
+  - component: {fileID: 2010386978}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
@@ -1209,6 +1212,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2010386978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010386973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ba82b3389f88240af39d1ef581ce25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Swinging
+  lr: {fileID: 0}
+  attachable:
+    serializedVersion: 2
+    m_Bits: 128
+  cam: {fileID: 330585546}
+  player: {fileID: 0}
+  ropeLauncher: {fileID: 330585546}
+  maxSwingDistance: 0
+--- !u!114 &2010386979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010386973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05ccd5a947e07e4c98e9175a2222445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement
+  moveSpeed: 10
+  jumpSpeed: 6
+  gravMult: 1.5
+  rb: {fileID: 2010386980}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  groundDistance: 0
+  cameraObj: {fileID: 330585543}
+  sensY: 150
+  sensX: 100
+--- !u!54 &2010386980
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010386973}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
