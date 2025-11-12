@@ -7,7 +7,7 @@ public class Swinging : MonoBehaviour
     public Transform cam, player, ropeLauncher;
 
     public float maxSwingDistance;
-    Vector3 swingPoint;
+    Vector3 anchorPoint;
     SpringJoint joint;
     Vector3 currentGrapplePos;
 
